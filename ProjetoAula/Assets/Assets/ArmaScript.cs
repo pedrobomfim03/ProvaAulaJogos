@@ -21,7 +21,6 @@ public class ArmaScript : MonoBehaviour
     private int cooldown;
     private int contadorCooldown;
     private Camera mainCamera;
-    private AudioSource audio;
 
     void Start()
     {
@@ -35,21 +34,7 @@ public class ArmaScript : MonoBehaviour
     void Update()
     {
         contadorCooldown++;
-        if(Input.GetButtonDown("Fire1")){
-            if(contadorCooldown>=cooldown){
-                if(this.municao>0){
-                    this.somTiro.Play();
-                    if(toogle==1){
-                        Instantiate(projetil,positionl.transform.position,positionl.transform.rotation);
-                    }else{
-                        Instantiate(projetil2,position2.transform.position,position2.transform.rotation);
-                    }
-                    this.municao--;
-                    this.textoMunicao.GetComponent<Text>().text = "Munição: "+this.municao.ToString();
-                }
-                contadorCooldown = 0;
-            }
-        }if(Input.GetButton("Fire1")){
+        if(Input.GetButton("Fire1")){
             
             if(contadorCooldown>=cooldown){
                 if(this.municao>0){
@@ -64,6 +49,7 @@ public class ArmaScript : MonoBehaviour
                 }
                 contadorCooldown = 0;
             }
+
         }else if(Input.GetButtonDown("Fire2")){
             toogle++;
             if(toogle>3){
